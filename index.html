@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calam.in - Architectural Excellence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3d3 100%);
+        }
+        .brown-accent { color: #8b4513; }
+        .brown-bg { background-color: #8b4513; }
+        .light-brown-bg { background-color: #d2b48c; }
+        .off-white-bg { background-color: #f5f5f0; }
+        .image-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #8b4513;
+            transition: color 0.3s ease;
+        }
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out forwards;
+        }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-1000 { animation-delay: 1s; }
+        
+        /* Scroll animations */
+        .fade-in-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .fade-in-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Futuristic Layout Styles */
+        .futuristic-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .span-4 { grid-column: span 4; }
+        .span-6 { grid-column: span 6; }
+        .span-8 { grid-column: span 8; }
+        .span-12 { grid-column: span 12; }
+        
+        /* Portrait Image Handling */
+        .portrait-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portrait-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        /* Varied Image Sizes */
+        .image-small { height: 250px; }
+        .image-medium { height: 350px; }
+        .image-large { height: 450px; }
+        .image-xlarge { height: 600px; }
+        
+        /* Futuristic Cards */
+        .futuristic-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        
+        .futuristic-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.15);
+            border-color: rgba(139, 69, 19, 0.2);
+        }
+        
+        .featured-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3d3 100%);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 25px 50px rgba(139, 69, 19, 0.2);
+        }
+        
+        /* Content Descriptions */
+        .content-description {
+            padding: 2rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #8b4513;
+        }
+        
+        .content-description h3 {
+            color: #8b4513;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .content-description p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Grid */
+        @media (max-width: 768px) {
+            .futuristic-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .span-4, .span-6, .span-8, .span-12 {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <img src="Images/calam-logo.png" alt="Calam.in Logo" class="h-10 w-auto mr-3">
+                    <span class="font-playfair text-2xl font-semibold brown-accent">calam.in</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="nav-link text-gray-700 hover:text-brown-accent font-medium">Home</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-brown-accent font-medium">Projects</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-brown-accent font-medium">Services</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-brown-accent font-medium">About</a>
+                    <a href="#" class="nav-link text-gray-700 hover:text-brown-accent font-medium">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-playfair text-5xl lg:text-6xl font-bold text-gray-800 mb-6">
+                        Architectural
+                        <span class="brown-accent">Excellence</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        We craft spaces that inspire, buildings that endure, and designs that transform communities. 
+                        Our architectural firm brings together creativity, functionality, and sustainability in every project.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="brown-bg text-white px-8 py-3 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-300">
+                            View Our Work
+                        </button>
+                        <button class="border-2 border-brown-accent text-brown-accent px-8 py-3 rounded-lg font-medium hover:bg-brown-accent hover:text-white transition-all duration-300">
+                            Get In Touch
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="Images/img1.jpg" alt="Modern Architecture" class="rounded-lg shadow-2xl image-hover">
+                    <div class="absolute -bottom-6 -left-6 w-24 h-24 brown-bg rounded-full opacity-20"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 light-brown-bg rounded-full opacity-30"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-playfair text-4xl font-bold text-gray-800 mb-4">About Calam.in</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    With decades of experience in architectural design, we specialize in creating innovative 
+                    spaces that balance aesthetics, functionality, and environmental responsibility.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 brown-bg rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Innovative Design</h3>
+                    <p class="text-gray-600">Cutting-edge architectural solutions that push the boundaries of conventional design.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 brown-bg rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Sustainable Solutions</h3>
+                    <p class="text-gray-600">Environmentally conscious designs that minimize impact while maximizing efficiency.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 brown-bg rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-playfair text-xl font-semibold text-gray-800 mb-2">Quality Assurance</h3>
+                    <p class="text-gray-600">Rigorous standards and attention to detail in every aspect of our projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-scroll">
+                <h2 class="font-playfair text-4xl font-bold text-gray-800 mb-4">Featured Projects</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our most prestigious architectural achievements that define our design excellence.
+                </p>
+            </div>
+            
+            <div class="futuristic-grid">
+                <!-- Signature Project - Large -->
+                <div class="span-8 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-xlarge">
+                        <img src="Images/img1.jpg" alt="Signature Architectural Project" class="portrait-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 text-white">
+                            <div class="bg-brown-accent text-white px-6 py-3 rounded-full text-sm font-medium inline-block mb-4">
+                                Featured Project
+                            </div>
+                            <h3 class="font-playfair text-4xl font-bold mb-3">Signature Architectural Masterpiece</h3>
+                            <p class="text-xl opacity-90 max-w-2xl">Our flagship project that embodies our design philosophy and commitment to excellence in every detail.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Description -->
+                <div class="span-4 content-description fade-in-scroll">
+                    <h3>Design Philosophy</h3>
+                    <p>At Calam.in, we believe architecture should not only be functional but also inspire and transform the way people experience space. Our signature project represents the pinnacle of this philosophy.</p>
+                    <p>Every element is carefully considered, from the initial concept to the final details, ensuring that form follows function while creating spaces that elevate the human experience.</p>
+                </div>
+
+                <!-- Urban Innovation - Large -->
+                <div class="span-8 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-xlarge">
+                        <img src="Images/img6.jpg" alt="Urban Innovation" class="portrait-image">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-8 left-8 text-white">
+                            <div class="bg-brown-accent text-white px-6 py-3 rounded-full text-sm font-medium inline-block mb-4">
+                                Urban Design
+                            </div>
+                            <h3 class="font-playfair text-4xl font-bold mb-3">Urban Innovation</h3>
+                            <p class="text-xl opacity-90 max-w-2xl">Transforming city spaces into sustainable, livable environments through innovative architectural solutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Innovation Description -->
+                <div class="span-4 content-description fade-in-scroll">
+                    <h3>Sustainable Innovation</h3>
+                    <p>Our urban innovation projects focus on creating sustainable, livable environments that work in harmony with nature while meeting the needs of modern urban living.</p>
+                    <p>We integrate cutting-edge technology with timeless design principles to create spaces that are both beautiful and environmentally responsible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery Section -->
+    <section class="py-20 off-white-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-scroll">
+                <h2 class="font-playfair text-4xl font-bold text-gray-800 mb-4">Our Portfolio</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our diverse range of architectural projects that showcase our commitment to excellence and innovation.
+                </p>
+            </div>
+            
+            <div class="futuristic-grid">
+                <!-- Project 2 - Medium -->
+                <div class="span-6 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-medium">
+                        <img src="Images/img2.jpg" alt="Modern Architecture" class="portrait-image">
+                        <div class="absolute inset-0 bg-brown-accent bg-opacity-0 hover:bg-opacity-20 transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - Small -->
+                <div class="span-6 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-small">
+                        <img src="Images/img3.jpg" alt="Commercial Design" class="portrait-image">
+                        <div class="absolute inset-0 bg-brown-accent bg-opacity-0 hover:bg-opacity-20 transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Large -->
+                <div class="span-8 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-large">
+                        <img src="Images/img4.jpg" alt="Cultural Architecture" class="portrait-image">
+                        <div class="absolute inset-0 bg-brown-accent bg-opacity-0 hover:bg-opacity-20 transition-all duration-500"></div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Medium -->
+                <div class="span-4 futuristic-card fade-in-scroll">
+                    <div class="portrait-container image-medium">
+                        <img src="Images/img5.jpg" alt="Sustainable Design" class="portrait-image">
+                        <div class="absolute inset-0 bg-brown-accent bg-opacity-0 hover:bg-opacity-20 transition-all duration-500"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-scroll">
+                <h2 class="font-playfair text-4xl font-bold text-gray-800 mb-4">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive architectural solutions tailored to your vision and needs.
+                </p>
+            </div>
+            
+            <div class="futuristic-grid">
+                <!-- Service 1 -->
+                <div class="span-4 content-description fade-in-scroll">
+                    <h3>Architectural Design</h3>
+                    <p>From concept to completion, we create innovative architectural solutions that blend functionality with aesthetic excellence.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="span-4 content-description fade-in-scroll">
+                    <h3>Urban Planning</h3>
+                    <p>Comprehensive urban planning services that create sustainable, livable communities for the future.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="span-4 content-description fade-in-scroll">
+                    <h3>Interior Design</h3>
+                    <p>Thoughtful interior spaces that enhance the architectural experience and improve quality of life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 brown-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brown-accent to-brown-bg opacity-90"></div>
+        <div class="absolute inset-0">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-24 h-24 bg-white/10 rounded-full animate-pulse delay-1000"></div>
+            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white/5 rounded-full animate-pulse delay-500"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="font-playfair text-5xl font-bold mb-6 fade-in-scroll">Ready to Build Your Vision?</h2>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto fade-in-scroll">
+                Let's collaborate to create architectural solutions that exceed your expectations and stand the test of time.
+            </p>
+            <button class="bg-white text-brown-accent px-10 py-4 rounded-lg font-semibold text-lg hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-xl fade-in-scroll">
+                Start Your Project
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="off-white-bg py-16 relative">
+        <div class="absolute inset-0 bg-gradient-to-t from-brown-accent/5 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <img src="Images/calam-logo.png" alt="Calam.in Logo" class="h-12 w-auto mr-4">
+                        <span class="font-playfair text-3xl font-bold brown-accent">calam.in</span>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 max-w-md">
+                        Creating architectural excellence through innovative design, sustainable practices, and uncompromising quality.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="w-12 h-12 brown-bg text-white rounded-full flex items-center justify-center hover:bg-brown-accent hover:scale-110 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 brown-bg text-white rounded-full flex items-center justify-center hover:bg-brown-accent hover:scale-110 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-12 h-12 brown-bg text-white rounded-full flex items-center justify-center hover:bg-brown-accent hover:scale-110 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-playfair text-xl font-bold text-gray-800 mb-6">Services</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><a href="#" class="hover:text-brown-accent transition-colors text-lg">Architectural Design</a></li>
+                        <li><a href="#" class="hover:text-brown-accent transition-colors text-lg">Urban Planning</a></li>
+                        <li><a href="#" class="hover:text-brown-accent transition-colors text-lg">Interior Design</a></li>
+                        <li><a href="#" class="hover:text-brown-accent transition-colors text-lg">Project Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-playfair text-xl font-bold text-gray-800 mb-6">Contact</h3>
+                    <div class="space-y-3 text-gray-700">
+                        <p class="text-lg">123 Architecture Lane</p>
+                        <p class="text-lg">Design City, DC 12345</p>
+                        <p class="text-lg">Phone: (555) 123-4567</p>
+                        <p class="text-lg">Email: info@calam.in</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-brown-accent/20 pt-8 text-center">
+                <p class="text-gray-600 text-lg">&copy; 2024 Calam.in. All rights reserved. Crafted with architectural precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in-scroll elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const fadeElements = document.querySelectorAll('.fade-in-scroll');
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
